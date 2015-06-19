@@ -14,10 +14,10 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	error(char *err_msg, t_options *options)
+void	error(char *err_msg)
 {
 	ft_putendl("ERROR");
-	if (/* option -l */)
+	if (options()->r == ON)
 		ft_putendl(ft_cat(err_msg, ":"))
 	exit();
 }

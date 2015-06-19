@@ -10,23 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include "push_swap.h"
 
-t_options	*add_options()
+t_options				*options(void)
 {
-	t_options	*options;
+	static t_options		*glob = NULL;
 
-	options->l = 0;
-	return options
+	if (!glob)
+	{
+		if (!(glob = ft_memalloc(sizeof(t_options))))
+			malloc_error("glob");
+		glob->r = OFF
+		glob->d = OFF
+	}
+	return (glob);
 }
 
-t_options	*is_options(char **argv, t_option *options)
+int			*is_options(char **argv)
 {
 	if (*argv[0] == '-')
 	{
 		if (*argv[1] == 'l')
 		{
-			options->l = 1;
+			options()->r = ON;
 			return (1);
 		}
 	}

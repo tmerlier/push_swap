@@ -17,10 +17,10 @@ int		main(int argc, char **argv)
 {
 	t_options	*options;
 
-	add_options(argv[1], options);
+	options();
 	if (argc < 2)
 		error("Aucun argument.", options);
 	else
-		create_list(argv, options);
+		create_list(argv);
 	return 0;
 }
