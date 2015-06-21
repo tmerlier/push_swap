@@ -15,12 +15,13 @@
 
 int		main(int argc, char **argv)
 {
-	t_options	*options;
+	t_push	*list;
 
-	options();
+	list = NULL;
 	if (argc < 2)
-		error("Aucun argument.", options);
+		error("Aucun argument.");
 	else
-		create_list(argv);
+		list = create_list(argc, argv);
+	print_list(list);
 	return 0;
 }

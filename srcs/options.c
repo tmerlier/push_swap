@@ -20,18 +20,18 @@ t_options				*options(void)
 	if (!glob)
 	{
 		if (!(glob = ft_memalloc(sizeof(t_options))))
-			malloc_error("glob");
-		glob->r = OFF
-		glob->d = OFF
+			error("Malloc fail.");
+		glob->r = OFF;
+		glob->d = OFF;
 	}
 	return (glob);
 }
 
-int			*is_options(char **argv)
+int			is_option(char *argv)
 {
-	if (*argv[0] == '-')
+	if (argv[0] == '-')
 	{
-		if (*argv[1] == 'l')
+		if (argv[1] == 'l')
 		{
 			options()->r = ON;
 			return (1);

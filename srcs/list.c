@@ -13,17 +13,18 @@
 #include <libft.h>
 #include "push_swap.h"
 
-static t_push	new_list(int nb)
+static t_push	*new_list(int nb)
 {
 	t_push	*new;
 
 	if (!(new = ft_memalloc(sizeof(t_push *))))
-		error("Malloc fail.")
-	tmp->nb = nb;
-	tmp->start = ON;
-	tmp->prev = NULL;
-	tmp->next = NULL;
-// }
+		error("Malloc fail.");
+	new->nb = nb;
+	new->prev = NULL;
+	new->next = NULL;
+
+	return (new);
+}
 // struct dada
 // {
 // 	t_push		start;
@@ -38,7 +39,21 @@ static t_push	new_list(int nb)
 // 	e.end = e.end->next;
 // }
 
-void			add_nb(int nb, t_push *list)
+void			print_list(t_push *list)
+{
+	t_push	*tmp;
+
+	tmp = list;
+	while (tmp->next != list)
+	{
+		ft_putstr("list = ");
+		ft_putnbr(tmp->nb);
+		ft_putchar('\n');
+		tmp = tmp->next;
+	}
+}
+
+void			add_nb(int nb, t_push **list)
 {
 	static t_push	*last = NULL;
 	t_push			*new;
@@ -46,31 +61,42 @@ void			add_nb(int nb, t_push *list)
 	new = new_list(nb);
 	if (last)
 	{
-		tmp->start = OFF;
-		tmp->prev = last;
-		tmp->next = list;
-		last = tmp;
-		list->prev = last;
+		last->next = new;
+		new->prev = last;
+		new->next = *list;
+		(*list)->prev = new;
+		last = new;
 	}
 	else
-		list = new_list(nb);
+	{
+		*list = new;
+		last = *list;
+	}
 }
 
-t_push			*create_list(char **argv)
+// new<-[list]->new
+// last<-[new/last]->list
+
+
+t_push			*create_list(int argc, char **argv)
 {
 	t_push	*list;
+	int		i;
 
-	list = NULL
-	while (*argv++)
+	list = NULL;
+	i = 1;
+	while (i < argc)
 	{
-		if (ft_str_isint(*argv, ft_strlen(*argv)))
-			add_nb(ft_atoi(*argv), list);
-		else if (is_option(*argv))
+		if (!ft_str_isint(argv[i], ft_strlen(argv[i])))
+			add_nb(ft_atoi(argv[i]), &list);
+		else if (is_option(argv[i]))
 			;
 		else
 			error("Au moins un argument n\'est pas un int.");
+		i++;
 	}
+	return list;
 }
 
 
-// []->[]->[]->[tmp2]->[tmp]->//
+// /<-[list]-><-[new/last]->/

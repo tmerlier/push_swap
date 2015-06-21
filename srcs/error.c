@@ -18,6 +18,6 @@ void	error(char *err_msg)
 {
 	ft_putendl("ERROR");
 	if (options()->r == ON)
-		ft_putendl(ft_cat(err_msg, ":"))
-	exit();
+		ft_putendl(ft_strcat(err_msg, ":"));
+	exit(0);
 }

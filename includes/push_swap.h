@@ -19,7 +19,6 @@
 typedef struct		s_push
 {
 	int				nb;
-	int				start;
 	struct s_push	*prev;
 	struct s_push	*next;
 }					t_push;
@@ -30,10 +29,14 @@ typedef struct	s_options
 	int			d;
 }				t_options;
 
-t_push			*create_list(char **argv);
-void			add_nb(int nb);
+t_push			*create_list(int argc, char **argv);
+void			print_list(t_push *list);
+void			add_nb(int nb, t_push **list);
+
 t_options		*init_options(void);
-int				is_options(char **argv);
+t_options		*options(void);
+int				is_option(char *argv);
+
 void			error(char *err_msg);
 
 #endif
