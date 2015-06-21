@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2014/04/16 19:03:40 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/21 15:23:10 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,15 @@ static t_push	*new_list(int nb)
 // 	e.end = e.end->next;
 // }
 
-void			print_list(t_push *list)
+void			print_list(t_push **list)
 {
 	t_push	*tmp;
 
-	tmp = list;
-	while (tmp->next != list)
+	tmp = *list;
+	while (tmp->next != *list && tmp->next)
 	{
-		ft_putstr("list = ");
-		ft_putnbr(tmp->nb);
-		ft_putchar('\n');
+		// ft_putnbr(tmp->nb);
+		// ft_putchar('\n');
 		tmp = tmp->next;
 	}
 }
@@ -61,11 +60,19 @@ void			add_nb(int nb, t_push **list)
 	new = new_list(nb);
 	if (last)
 	{
-		last->next = new;
+		ft_putstr("-|(");
+		ft_putnbr(last->nb);
+		ft_putstr(")|-\n");
+
+		last->next = new;  //problem
 		new->prev = last;
 		new->next = *list;
-		(*list)->prev = new;
-		last = new;
+		last = new;        //problem
+		ft_putstr("-|(");
+		ft_putnbr(last->nb);
+		ft_putstr(")|-\n");
+
+		(*list)->prev = last;
 	}
 	else
 	{
@@ -74,9 +81,39 @@ void			add_nb(int nb, t_push **list)
 	}
 }
 
-// new<-[list]->new
-// last<-[new/last]->list
+// NULL<-[list]->NULL
+// NULL<-[new1]->NULL
 
+int				check_number(t_push *list, char *nbr)
+{
+	t_push	*tmp;
+
+	if (!ft_str_isint(nbr, ft_strlen(nbr)))
+	{
+		if (list)
+		{
+			tmp = list;
+			// ft_putendl("list");
+			while (tmp->next)
+			{
+				// ft_putendl("while");
+				if (tmp->next == list)
+				{
+				// ft_putendl("break");
+					break;
+				}
+				if (tmp->nb == ft_atoi(nbr))
+					error("Argument en double.");
+				tmp = tmp->next;
+			}
+			return (1);
+		}
+		else
+			return (1);
+	}
+	error("Au moins un argument n\'est pas un int.");
+	return (0);
+}
 
 t_push			*create_list(int argc, char **argv)
 {
@@ -87,12 +124,12 @@ t_push			*create_list(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_str_isint(argv[i], ft_strlen(argv[i])))
+		if (check_number(list, argv[i]))
 			add_nb(ft_atoi(argv[i]), &list);
 		else if (is_option(argv[i]))
 			;
 		else
-			error("Au moins un argument n\'est pas un int.");
+			error("???");
 		i++;
 	}
 	return list;

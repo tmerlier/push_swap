@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2014/04/16 19:03:40 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/21 11:11:31 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int		main(int argc, char **argv)
 		error("Aucun argument.");
 	else
 		list = create_list(argc, argv);
-	print_list(list);
+	print_list(&list);
 	return 0;
 }

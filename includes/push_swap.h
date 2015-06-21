@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 11:54:51 by tmerlier          #+#    #+#             */
-/*   Updated: 2014/04/21 11:29:19 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/21 11:11:36 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_options
 }				t_options;
 
 t_push			*create_list(int argc, char **argv);
-void			print_list(t_push *list);
+void			print_list(t_push **list);
 void			add_nb(int nb, t_push **list);
 
 t_options		*init_options(void);
