@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2014/04/16 19:03:40 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/21 12:14:56 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	error(char *err_msg)
 {
 	ft_putendl("ERROR");
 	if (options()->r == ON)
-		ft_putendl(ft_strcat(err_msg, ":"));
+	{
+		ft_putchar(':');
+		ft_putendl(err_msg);
+	}
 	exit(0);
 }
