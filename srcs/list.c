@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <libft.h>
 #include "push_swap.h"
 
@@ -17,7 +18,7 @@ static t_push	*new_list(int nb)
 {
 	t_push	*new;
 
-	if (!(new = ft_memalloc(sizeof(t_push *))))
+	if (!(new = (t_push *) malloc(sizeof(t_push *))))
 		error("Malloc fail.");
 	new->nb = nb;
 	new->prev = NULL;
@@ -39,19 +40,39 @@ static t_push	*new_list(int nb)
 // 	e.end = e.end->next;
 // }
 
+void			print_data(int nb)
+{
+	ft_putstr("list = ");
+	ft_putnbr(nb);
+	ft_putchar('\n');
+}
+
 void			print_list(t_push *list)
 {
 	t_push	*tmp;
 
 	tmp = list;
-	while (tmp->next != list)
+	if (tmp)
 	{
-		ft_putstr("list = ");
-		ft_putnbr(tmp->nb);
-		ft_putchar('\n');
-		tmp = tmp->next;
+		ft_putendl("tmp");
+		print_data(tmp->nb);
+		if (tmp->next)
+		{
+			tmp = tmp->next;
+			ft_putendl("if");
+			while (tmp != list)
+			{
+				ft_putendl("while");
+				print_data(tmp->nb);
+				tmp = tmp->next;
+			}
+		}
 	}
 }
+
+
+// test
+#include <stdio.h>
 
 void			add_nb(int nb, t_push **list)
 {
@@ -61,22 +82,27 @@ void			add_nb(int nb, t_push **list)
 	new = new_list(nb);
 	if (last)
 	{
+		// printf("last = %p\nlist = %p\nnew  = %p\n\n",last, list, new);
 		last->next = new;
+		// printf("last = %p\nlist = %p\nnew = %p\n",last, list, new);
 		new->prev = last;
+		// printf("last = %p\nlist = %p\nnew = %p\n",last, list, new);
 		new->next = *list;
+		// printf("last = %p\nlist = %p\nnew = %p\n",last, list, new);
 		(*list)->prev = new;
+		// printf("last = %p\nlist = %p\nnew = %p\n",last, list, new);
 		last = new;
+		// printf("last = %p\nlist = %p\nnew = %p\n",last, list, new);
 	}
 	else
 	{
+		printf("last = %p\nlist = %p\nnew  = %p\n\n",last, list, new);
 		*list = new;
+		printf("last = %p\nlist = %p\nnew  = %p\n\n",last, list, new);
 		last = *list;
+		printf("last = %p\nlist = %p\nnew  = %p\n\n",last, list, new);
 	}
 }
-
-// new<-[list]->new
-// last<-[new/last]->list
-
 
 t_push			*create_list(int argc, char **argv)
 {
