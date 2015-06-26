@@ -123,6 +123,3 @@ t_push			*create_list(int argc, char **argv)
 	}
 	return list;
 }
-
-
-// /<-[list]-><-[new/last]->/
