@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2014/04/16 19:03:40 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/21 12:15:26 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			is_option(char *argv)
 {
 	if (argv[0] == '-')
 	{
-		if (argv[1] == 'l')
+		if (argv[1] == 'r')
 		{
 			options()->r = ON;
 			return (1);
