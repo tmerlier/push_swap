@@ -22,6 +22,6 @@ int		main(int argc, char **argv)
 		error("Aucun argument.");
 	else
 		list = create_list(argc, argv);
-	print_list(&list);
+	print_list(list);
 	return 0;
 }
