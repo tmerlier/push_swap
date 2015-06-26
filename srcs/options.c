@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/21 12:15:26 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/26 16:06:09 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,22 @@ t_options				*options(void)
 
 int			is_option(char *argv)
 {
-	if (argv[0] == '-')
+	int		len;
+	int		i;
+
+	len = ft_strlen(argv);
+	if (argv[0] == '-' && len > 1)
 	{
-		if (argv[1] == 'r')
+		i = 1;
+		while (i < len)
 		{
-			options()->r = ON;
-			return (1);
+			if (argv[i] == 'r')
+				options()->r = ON;
+			else if (argv[i] == 'd')
+				options()->d = ON;
+			else
+				error("Option doesn't exist.");
+			i++;
 		}
 	}
 	return (0);

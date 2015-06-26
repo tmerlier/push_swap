@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/26 14:27:02 by tmerlier         ###   ########.fr       */
+/*   Created: 2015/06/26 14:16:39 by tmerlier          #+#    #+#             */
+/*   Updated: 2015/06/26 14:24:32 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#include <stdlib.h>
 #include "push_swap.h"
 
-void	error(char *err_msg)
+static void			print_data(int nb)
 {
-	ft_putstr("ERROR");
-	if (options()->r == ON)
+	ft_putstr("list = ");
+	ft_putnbr(nb);
+	ft_putchar('\n');
+}
+
+void			print_list(t_push *list)
+{
+	t_push	*tmp;
+
+	tmp = list;
+	while (tmp)
 	{
-		ft_putchar(':');
-		ft_putendl(err_msg);
+		print_data(tmp->nb);
+		tmp = tmp->next;
 	}
-	else
-		ft_putchar('\n');
-	exit(0);
 }
