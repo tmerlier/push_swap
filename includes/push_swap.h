@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 11:54:51 by tmerlier          #+#    #+#             */
-/*   Updated: 2014/04/21 11:29:19 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/26 15:09:31 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void			add_nb(int nb, t_push **list);
 t_options		*init_options(void);
 t_options		*options(void);
 int				is_option(char *argv);
+
+int				checkint(char *arg);
+void			checkdouble(t_push *list);
 
 void			error(char *err_msg);
 

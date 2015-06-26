@@ -6,7 +6,7 @@
 #    By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/27 16:01:27 by tmerlier          #+#    #+#              #
-#    Updated: 2014/06/04 23:57:48 by tmerlier         ###   ########.fr        #
+#    Updated: 2015/06/26 14:21:40 by tmerlier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ FLAGS = -Wall -Wextra -Werror -g
 SRC = main.c \
 	  list.c \
 	  options.c \
+	  check.c \
+	  print.c \
 	  error.c
 
 OBJ = $(SRC:.c=.o)
