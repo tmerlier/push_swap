@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/26 16:07:00 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/27 15:52:22 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,22 @@ t_push			*create_list(int argc, char **argv)
 {
 	t_push	*list;
 	int		i;
+	int		option;
 
 	list = NULL;
+	option = 0;
+	if (argv[1][0] == '-')
+		option = is_option(argv[1]);
 	i = 1;
+	ft_putnbr(option);
 	while (i < argc)
 	{
 		if (checkint(argv[i]))
-		{
-			ft_putendl("checkint");
 			add_nb(ft_atoi(argv[i]), &list);
-		}
-		else if (is_option(argv[i]))
-		{
-			ft_putendl("is_option");
-		}
 		else
 			error("Au moins un argument n\'est pas un int.");
 		i++;
 	}
 	checkdouble(list);
-	ft_putendl("Tout roule!");
 	return list;
 }
