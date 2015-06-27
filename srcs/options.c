@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/26 16:06:09 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/27 14:39:48 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int			is_option(char *argv)
 	int		i;
 
 	len = ft_strlen(argv);
-	if (argv[0] == '-' && len > 1)
+	if (len > 1)
 	{
+		ft_putendl("coucou");
 		i = 1;
 		while (i < len)
 		{
@@ -42,9 +43,12 @@ int			is_option(char *argv)
 				options()->r = ON;
 			else if (argv[i] == 'd')
 				options()->d = ON;
+			else if (argv[i] >= 48 && argv[i] <= 57)
+				return (0);
 			else
 				error("Option doesn't exist.");
 			i++;
+			ft_putendl("continu");
 		}
 	}
 	return (0);

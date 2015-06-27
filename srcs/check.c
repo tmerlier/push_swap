@@ -6,7 +6,7 @@
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/26 14:13:56 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/26 16:13:45 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/27 14:39:57 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,8 @@ int				checkint(char *arg)
 	{
 		while (arg[i])
 		{
-			if (i == 0 && arg[i] == 45 && len > 1)
-			{
-				ft_putendl("C est un tiret");
-			}
-			else if (arg[i] < 48 || *arg > 57)
-			{
-				ft_putendl("Houla");
+			if (arg[i] < 48 || arg[i] > 57)
 				return (0);
-			}
-			else
-				;
 			i++;
 		}
 		return (1);
