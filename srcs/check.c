@@ -13,27 +13,23 @@
 #include <libft.h>
 #include "push_swap.h"
 
-int				checkint(char *arg)
+int				checklen(t_push *list)
 {
-	int			len;
-	int			i;
+	int		i;
 
 	i = 0;
-	len = ft_strlen(arg);
-	if (!ft_str_isint(arg, len))
+	while (list)
 	{
-		while (arg[i])
-		{
-			if (arg[i] < 48 || arg[i] > 57)
-				return (0);
-			i++;
-		}
-		return (1);
+		list = list->next;
+		i++;
 	}
-	return (0);
+	if (i == 0)
+		error("List is empty.");
+	return (i);
+
 }
 
-void			checkdouble(t_push *list)
+int				checkdouble(t_push *list)
 {
 	t_push		*tmp;
 
@@ -48,4 +44,5 @@ void			checkdouble(t_push *list)
 		}
 		list = list->next;
 	}
+	return (1);
 }

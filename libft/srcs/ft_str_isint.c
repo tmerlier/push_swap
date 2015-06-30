@@ -21,9 +21,15 @@ int		ft_str_isint(char *str, int len)
 	if (len == 10)
 	{
 		if (ft_strcmp(str, "2147483647") > 0)
-			return (1);
+			return (0);
 	}
 	else if (len > 10)
-		return (1);
-	return (0);
+		return (0);
+	while (*str)
+	{
+		if (*str < 48 || *str > 57)
+			return (0);
+		str++;
+	}
+	return (1);
 }

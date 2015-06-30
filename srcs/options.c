@@ -13,6 +13,16 @@
 #include <libft.h>
 #include "push_swap.h"
 
+static int				option_active()
+{
+	if (options()->r == ON)
+		return (1);
+	else if (options()->d == ON)
+		return (1);
+	else
+		return (0);
+}
+
 t_options				*options(void)
 {
 	static t_options		*glob = NULL;
@@ -29,27 +39,25 @@ t_options				*options(void)
 
 int			is_option(char *argv)
 {
+	int		active;
 	int		len;
 	int		i;
 
+	active = 0;
 	len = ft_strlen(argv);
-	if (len > 1)
+	if (len > 2 && argv[1] == '-')
 	{
-		ft_putendl("coucou");
-		i = 1;
+		i = 2;
 		while (i < len)
 		{
 			if (argv[i] == 'r')
 				options()->r = ON;
 			else if (argv[i] == 'd')
 				options()->d = ON;
-			else if (argv[i] >= 48 && argv[i] <= 57)
-				return (0);
 			else
 				error("Option doesn't exist.");
 			i++;
-			ft_putendl("continu");
 		}
 	}
-	return (0);
+	return (option_active());
 }
