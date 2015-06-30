@@ -37,8 +37,8 @@ t_options		*init_options(void);
 t_options		*options(void);
 int				is_option(char *argv);
 
-int				checkint(char *arg);
-void			checkdouble(t_push *list);
+int				checklen(t_push *list);
+int				checkdouble(t_push *list);
 
 void			error(char *err_msg);
 

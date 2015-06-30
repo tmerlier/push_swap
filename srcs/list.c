@@ -53,16 +53,16 @@ t_push			*create_list(int argc, char **argv)
 	option = 0;
 	if (argv[1][0] == '-')
 		option = is_option(argv[1]);
-	i = 1;
-	ft_putnbr(option);
+	i = 1 + option;
 	while (i < argc)
 	{
-		if (checkint(argv[i]))
+		if (ft_str_isint(argv[i], ft_strlen(argv[i])))
 			add_nb(ft_atoi(argv[i]), &list);
 		else
 			error("Au moins un argument n\'est pas un int.");
 		i++;
 	}
 	checkdouble(list);
+	checklen(list);
 	return list;
 }

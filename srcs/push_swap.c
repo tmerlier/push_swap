@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/21 11:11:31 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/27 15:52:22 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "push_swap.h"
-
-int		main(int argc, char **argv)
+void		push_swap(t_push *listB)
 {
-	t_push	*listB;
+	t_push	*listA;
 
-	listB = NULL;
-	if (argc < 2)
-		error("Aucun argument.");
-	else
-		listB = create_list(argc, argv);
-	if (listB)
-		push_swap(listB);
-	return (0);
+	if (!(listA = (t_push *) malloc(sizeof(t_push) * checklen(listB))))
+		error("Malloc fail.")
+
 }
