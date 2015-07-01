@@ -26,18 +26,10 @@ SRC = main.c \
 	  options.c \
 	  check.c \
 	  print.c \
-	  swap_a.\
-	  swap_b.\
-	  swap_ab.\
-	  push_a.c \
-	  push_b.c \
-	  push_ab.c \
-	  rotate_a.c \
-	  rotate_b.c \
-	  rotate_ab.c \
-	  rev_rotate_a.c \
-	  rev_rotate_b.c \
-	  rev_rotate_ab.c \
+	  swap.c \
+	  push.c \
+	  rotate.c \
+	  rev_rotate.c \
 	  error.c
 
 OBJ = $(SRC:.c=.o)

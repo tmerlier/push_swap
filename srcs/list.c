@@ -27,7 +27,37 @@ static t_push	*new_list(int nb)
 	return (new);
 }
 
+void			del_nb(int nb, t_push **list)
+{
+	t_push	*tmp;
+
+	tmp = *list;
+	while (tmp->nb != nb)
+	{
+		tmp->prev->next = NULL;
+		tmp->prev = NULL;
+		tmp->next = NULL;
+		tmp = NULL;
+		free(tmp);
+	}
+}
+// A MODIFIER !!!!!!!!!
 void			add_nb(int nb, t_push **list)
+{
+	t_push			*new;
+
+	new = new_list(nb);
+	if (last)
+	{
+		last->next = new;
+		new->prev = last;
+	}
+	else
+		*list = new;
+	last = new;
+}
+
+static void			add_new_nb(int nb, t_push **list)
 {
 	static t_push	*last = NULL;
 	t_push			*new;
@@ -57,7 +87,7 @@ t_push			*create_list(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_str_isint(argv[i], ft_strlen(argv[i])))
-			add_nb(ft_atoi(argv[i]), &list);
+			add_new_nb(ft_atoi(argv[i]), &list);
 		else
 			error("Au moins un argument n\'est pas un int.");
 		i++;
