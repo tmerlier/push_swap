@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/26 14:16:39 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/26 14:24:32 by tmerlier         ###   ########.fr       */
+/*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
+/*   Updated: 2015/06/21 11:11:31 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include "push_swap.h"
 
-static void			print_data(int nb)
+void	swap_a(t_push **listA)
 {
-	ft_putnbr(nb);
-	ft_putchar(' ');
+	t_push		*tmp;
+	int			swap;
+
+	tmp = *listA;
+	while (tmp->next)
+		tmp = tmp->next;
+	swap = tmp->nb;
+	tmp->nb = tmp->prev->nb;
+	tmp->prev->nb = swap;
 }
 
-void			print_list(t_push *list, char *list_name)
+void	swap_b(t_push **listB)
 {
-	t_push	*tmp;
+	t_push		*tmp;
+	int			swap;
 
-	tmp = list;
-	ft_putstr(list_name);
-	if (tmp->next)
-	{
-		while (tmp)
-		{
-			print_data(tmp->nb);
-			tmp = tmp->next;
-		}
-	}
-	ft_putchar('\n');
+	tmp = *listB;
+	while (tmp->next)
+		tmp = tmp->next;
+	swap = tmp->nb;
+	tmp->nb = tmp->prev->nb;
+	tmp->prev->nb = swap;
 }
 
-void			print_display(t_push *listA, t_push *listB)
+void	swap_ab(t_push **listA, t_push **listB)
 {
-	print_list(listA, "a: ");
-	print_list(listB, "b: ");
+	swap_a(listA);
+	swap_b(listB);
 }

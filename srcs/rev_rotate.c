@@ -1,27 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:57:44 by tmerlier          #+#    #+#             */
-/*   Updated: 2015/06/27 15:52:22 by tmerlier         ###   ########.fr       */
+/*   Updated: 2015/06/21 11:11:31 by tmerlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
 
-void		push_swap(t_push *listA)
+void			rev_rotate_a(t_push **listA)
 {
-	t_push	*listB;
+	t_push		*tmpA;
+	int			end;
 
-	if (!(listB = (t_push *) malloc(sizeof(t_push) * checklen(listA))))
-		error("Malloc fail.");
-	print_display(listA, listB);
-	swap_a(&listA);
-	print_display(listA, listB);
-	push_b(&listA, &listB);
-	print_display(listA, listB);
+	tmpA = *listA;
+	while (tmpA->next)
+		tmpA = tmpA->next;
+	end = tmpA->nb;
+	while (tmpA->prev)
+	{
+		tmpA->nb = tmpA->prev->nb;
+		tmpA = tmpA->prev;
+	}
+	(*listA)->nb = end;
+}
+
+void			rev_rotate_b(t_push **listB)
+{
+	t_push		*tmpB;
+	int			end;
+
+	tmpB = *listB;
+	while (tmpB->next)
+		tmpB = tmpB->next;
+	end = tmpB->nb;
+	while (tmpB->prev)
+	{
+		tmpB->nb = tmpB->prev->nb;
+		tmpB = tmpB->prev;
+	}
+	(*listB)->nb = end;
+}
+
+void			rev_rotate_ab(t_push **listA, t_push **listB)
+{
+	rev_rotate_a(listA);
+	rev_rotate_b(listB);
 }
