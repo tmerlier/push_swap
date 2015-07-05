@@ -10,39 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include "push_swap.h"
 
-void		rotate_a(t_push **listA)
+void			rotate_a(t_push **listA)
 {
 	t_push		*tmpA;
-	int			start;
+	int			end;
 
+	if (options()->d)
+		ft_putendl("ra ");
 	tmpA = *listA;
-	start = (*listA)->nb;
 	while (tmpA->next)
-	{
-		tmpA->nb = tmpA->next->nb;
 		tmpA = tmpA->next;
+	end = tmpA->nb;
+	while (tmpA->prev)
+	{
+		tmpA->nb = tmpA->prev->nb;
+		tmpA = tmpA->prev;
 	}
-	tmpA->nb = start;
+	(*listA)->nb = end;
 }
 
-void		rotate_b(t_push **listB)
+void			rotate_b(t_push **listB)
 {
 	t_push		*tmpB;
-	int			start;
+	int			end;
 
+	if (options()->d)
+		ft_putendl("rb ");
 	tmpB = *listB;
-	start = (*listB)->nb;
 	while (tmpB->next)
-	{
-		tmpB->nb = tmpB->next->nb;
 		tmpB = tmpB->next;
+	end = tmpB->nb;
+	while (tmpB->prev)
+	{
+		tmpB->nb = tmpB->prev->nb;
+		tmpB = tmpB->prev;
 	}
-	tmpB->nb = start;
+	(*listB)->nb = end;
 }
 
-void		rotate_ab(t_push **listA, t_push **listB)
+void			rotate_ab(t_push **listA, t_push **listB)
 {
 	rotate_a(listA);
 	rotate_b(listB);
