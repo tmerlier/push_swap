@@ -18,14 +18,17 @@ void	swap_a(t_push **listA)
 	t_push		*tmp;
 	int			swap;
 
-	if (options()->d)
-		ft_putendl("sa ");
-	tmp = *listA;
-	while (tmp->next)
-		tmp = tmp->next;
-	swap = tmp->nb;
-	tmp->nb = tmp->prev->nb;
-	tmp->prev->nb = swap;
+	if (checklen(*listA) > 1)
+	{
+		if (options()->d)
+			ft_putendl("sa ");
+		tmp = *listA;
+		while (tmp->next)
+			tmp = tmp->next;
+		swap = tmp->nb;
+		tmp->nb = tmp->prev->nb;
+		tmp->prev->nb = swap;
+	}
 }
 
 void	swap_b(t_push **listB)
@@ -33,14 +36,17 @@ void	swap_b(t_push **listB)
 	t_push		*tmp;
 	int			swap;
 
-	if (options()->d)
-		ft_putendl("sb ");
-	tmp = *listB;
-	while (tmp->next)
-		tmp = tmp->next;
-	swap = tmp->nb;
-	tmp->nb = tmp->prev->nb;
-	tmp->prev->nb = swap;
+	if (checklen(*listB) > 1)
+	{
+		if (options()->d)
+			ft_putendl("sb ");
+		tmp = *listB;
+		while (tmp->next)
+			tmp = tmp->next;
+		swap = tmp->nb;
+		tmp->nb = tmp->prev->nb;
+		tmp->prev->nb = swap;
+	}
 }
 
 void	swap_ab(t_push **listA, t_push **listB)
