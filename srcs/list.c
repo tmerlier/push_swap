@@ -13,7 +13,8 @@
 #include <stdlib.h>
 #include <libft.h>
 #include "push_swap.h"
-
+// TEST
+#include <stdio.h>
 static t_push	*new_list(int nb)
 {
 	t_push	*new;
@@ -32,29 +33,30 @@ void			del_nb(int nb, t_push **list)
 	t_push	*tmp;
 
 	tmp = *list;
-	while (tmp->nb != nb)
-	{
+	while (tmp && tmp->nb != nb)
+		tmp = tmp->next;
+	free(tmp);
+	if (tmp->prev)
 		tmp->prev->next = NULL;
-		tmp->prev = NULL;
-		tmp->next = NULL;
-		tmp = NULL;
-		free(tmp);
-	}
+	tmp = NULL;
 }
-// A MODIFIER !!!!!!!!!
+
 void			add_nb(int nb, t_push **list)
 {
 	t_push			*new;
+	t_push			*tmp;
 
 	new = new_list(nb);
-	if (last)
-	{
-		last->next = new;
-		new->prev = last;
-	}
-	else
+	tmp = *list;
+	if (!*list)
 		*list = new;
-	last = new;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+		new->prev = tmp;
+	}
 }
 
 static void			add_new_nb(int nb, t_push **list)

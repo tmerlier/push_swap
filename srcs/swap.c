@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include "push_swap.h"
 
 void	swap_a(t_push **listA)
@@ -17,6 +18,8 @@ void	swap_a(t_push **listA)
 	t_push		*tmp;
 	int			swap;
 
+	if (options()->d)
+		ft_putendl("sa ");
 	tmp = *listA;
 	while (tmp->next)
 		tmp = tmp->next;
@@ -30,6 +33,8 @@ void	swap_b(t_push **listB)
 	t_push		*tmp;
 	int			swap;
 
+	if (options()->d)
+		ft_putendl("sb ");
 	tmp = *listB;
 	while (tmp->next)
 		tmp = tmp->next;

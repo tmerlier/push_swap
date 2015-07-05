@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include "push_swap.h"
 
 // TEST
@@ -19,16 +20,17 @@ void		push_a(t_push **listA, t_push **listB)
 	t_push		*tmpB;
 	int			swap;
 
+	if (options()->d)
+		ft_putendl("pa ");
 	tmpB = *listB;
 	if (tmpB->next)
 	{
 		while (tmpB->next)
-		tmpB = tmpB->next;
-		swap = tmpB->nb;
-		printf("swap =%d\n", swap);
-		add_nb(swap, listA);
-		del_nb(swap, listB);
+			tmpB = tmpB->next;
 	}
+	swap = tmpB->nb;
+	add_nb(swap, listA);
+	del_nb(swap, listB);
 }
 
 void		push_b(t_push **listA, t_push **listB)
@@ -36,18 +38,17 @@ void		push_b(t_push **listA, t_push **listB)
 	t_push		*tmpA;
 	int			swap;
 
+	if (options()->d)
+		ft_putendl("pb ");
 	tmpA = *listA;
 	if (tmpA->next)
 	{
 		while (tmpA->next)
 			tmpA = tmpA->next;
-		swap = tmpA->nb;
-		printf("swap =%d\n", swap);
-		add_nb(swap, listB);
-		printf("add_nb");
-		del_nb(swap, listA);
-		printf("del_nb");
 	}
+	swap = tmpA->nb;
+	add_nb(swap, listB);
+	del_nb(swap, listA);
 }
 
 void		push_ab(t_push **listA, t_push **listB)

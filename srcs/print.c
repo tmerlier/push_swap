@@ -25,13 +25,10 @@ void			print_list(t_push *list, char *list_name)
 
 	tmp = list;
 	ft_putstr(list_name);
-	if (tmp->next)
+	while (tmp)
 	{
-		while (tmp)
-		{
-			print_data(tmp->nb);
-			tmp = tmp->next;
-		}
+		print_data(tmp->nb);
+		tmp = tmp->next;
 	}
 	ft_putchar('\n');
 }
@@ -40,4 +37,5 @@ void			print_display(t_push *listA, t_push *listB)
 {
 	print_list(listA, "a: ");
 	print_list(listB, "b: ");
+	ft_putchar('\n');
 }

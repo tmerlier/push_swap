@@ -17,11 +17,22 @@ void		push_swap(t_push *listA)
 {
 	t_push	*listB;
 
-	if (!(listB = (t_push *) malloc(sizeof(t_push) * checklen(listA))))
-		error("Malloc fail.");
+	listB = NULL;
 	print_display(listA, listB);
 	swap_a(&listA);
 	print_display(listA, listB);
 	push_b(&listA, &listB);
+	push_b(&listA, &listB);
+	push_b(&listA, &listB);
+	print_display(listA, listB);
+	rotate_ab(&listA, &listB);
+	print_display(listA, listB);
+	rev_rotate_ab(&listA, &listB);
+	print_display(listA, listB);
+	swap_a(&listA);
+	print_display(listA, listB);
+	push_a(&listA, &listB);
+	push_a(&listA, &listB);
+	push_a(&listA, &listB);
 	print_display(listA, listB);
 }
