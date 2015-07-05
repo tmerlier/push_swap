@@ -23,14 +23,14 @@ void		push_a(t_push **listA, t_push **listB)
 	if (options()->d)
 		ft_putendl("pa ");
 	tmpB = *listB;
-	if (tmpB->next)
+	if (tmpB)
 	{
 		while (tmpB->next)
 			tmpB = tmpB->next;
+		swap = tmpB->nb;
+		add_nb(swap, listA);
+		del_nb(swap, listB);
 	}
-	swap = tmpB->nb;
-	add_nb(swap, listA);
-	del_nb(swap, listB);
 }
 
 void		push_b(t_push **listA, t_push **listB)
@@ -41,14 +41,14 @@ void		push_b(t_push **listA, t_push **listB)
 	if (options()->d)
 		ft_putendl("pb ");
 	tmpA = *listA;
-	if (tmpA->next)
+	if (tmpA)
 	{
 		while (tmpA->next)
 			tmpA = tmpA->next;
+		swap = tmpA->nb;
+		add_nb(swap, listB);
+		del_nb(swap, listA);
 	}
-	swap = tmpA->nb;
-	add_nb(swap, listB);
-	del_nb(swap, listA);
 }
 
 void		push_ab(t_push **listA, t_push **listB)

@@ -38,6 +38,8 @@ void			del_nb(int nb, t_push **list)
 	free(tmp);
 	if (tmp->prev)
 		tmp->prev->next = NULL;
+	else
+		list = NULL;
 	tmp = NULL;
 }
 
