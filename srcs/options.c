@@ -17,10 +17,22 @@ static int				option_active()
 {
 	if (options()->r == ON)
 		return (1);
-	else if (options()->d == ON)
+	else if (options()->v == ON)
 		return (1);
 	else
 		return (0);
+}
+
+void					reset_color(t_push **list)
+{
+	t_push	*tmp;
+
+	tmp = *list;
+	while (tmp)
+	{
+		tmp->color = OFF;
+		tmp = tmp->next;
+	}
 }
 
 t_options				*options(void)
@@ -32,7 +44,8 @@ t_options				*options(void)
 		if (!(glob = ft_memalloc(sizeof(t_options))))
 			error("Malloc fail.");
 		glob->r = OFF;
-		glob->d = OFF;
+		glob->v = OFF;
+		glob->c = OFF;
 	}
 	return (glob);
 }
@@ -52,8 +65,10 @@ int			is_option(char *argv)
 		{
 			if (argv[i] == 'r')
 				options()->r = ON;
-			else if (argv[i] == 'd')
-				options()->d = ON;
+			else if (argv[i] == 'v')
+				options()->v = ON;
+			else if (argv[i] == 'c')
+				options()->c = ON;
 			else
 				error("Option doesn't exist.");
 			i++;

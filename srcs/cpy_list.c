@@ -10,51 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stdlib.h>
 #include "push_swap.h"
 
-void	swap_a(t_push **listA, t_push **listB, t_action **action)
+static t_push		*new_list_cpy(int nb, int color)
 {
-	t_push		*tmp;
-	int			swap;
+	t_push	*new;
 
-	if (checklen(*listA) > 1)
+	if (!(new = (t_push *) malloc(sizeof(t_push))))
+		error("Malloc fail.");
+	new->nb = nb;
+	new->color = color;
+	new->prev = NULL;
+	new->next = NULL;
+
+	return (new);
+}
+
+static void			add_new_cpy(int nb, int color, t_push **cpy)
+{
+	t_push			*new;
+	t_push			*tmp;
+
+	new = new_list_cpy(nb, color);
+	tmp = *cpy;
+	if (!*cpy)
+		*cpy = new;
+	else
 	{
-		tmp = *listA;
 		while (tmp->next)
 			tmp = tmp->next;
-		swap = tmp->nb;
-		tmp->nb = tmp->prev->nb;
-		tmp->prev->nb = swap;
-		tmp->color = ON;
-		tmp->prev->color = ON;
-		add_action(action, cpy_list((*listA)), cpy_list((*listB)), "sa");
-		reset_color(listA);
+		tmp->next = new;
+		new->prev = tmp;
 	}
 }
 
-void	swap_b(t_push **listA, t_push **listB, t_action **action)
+t_push				*cpy_list(t_push *list)
 {
-	t_push		*tmp;
-	int			swap;
+	t_push	*cpy;
 
-	if (checklen(*listB) > 1)
+	cpy = NULL;
+	while (list)
 	{
-		tmp = *listB;
-		while (tmp->next)
-			tmp = tmp->next;
-		swap = tmp->nb;
-		tmp->nb = tmp->prev->nb;
-		tmp->prev->nb = swap;
-		tmp->color = ON;
-		tmp->prev->color = ON;
-		add_action(action, cpy_list((*listA)), cpy_list((*listB)), "sb");
-		reset_color(listB);
+		add_new_cpy(list->nb, list->color, &cpy);
+		list = list->next;
 	}
-}
-
-void	swap_ab(t_push **listA, t_push **listB, t_action **action)
-{
-	swap_a(listA, listB, action);
-	swap_b(listA, listB, action);
+	return (cpy);
 }

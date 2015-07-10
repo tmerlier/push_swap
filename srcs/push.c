@@ -13,15 +13,26 @@
 #include <libft.h>
 #include "push_swap.h"
 
-// TEST
-#include <stdio.h>
-void		push_a(t_push **listA, t_push **listB)
+void		push_color(t_push **list)
+{
+	t_push			*tmp;
+
+	tmp = *list;
+	if (!*list)
+		(*list)->color = ON;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->color = ON;
+	}
+}
+
+void		push_a(t_push **listA, t_push **listB, t_action **action)
 {
 	t_push		*tmpB;
 	int			swap;
 
-	if (options()->d)
-		ft_putendl("pa ");
 	tmpB = *listB;
 	if (tmpB)
 	{
@@ -29,17 +40,18 @@ void		push_a(t_push **listA, t_push **listB)
 			tmpB = tmpB->next;
 		swap = tmpB->nb;
 		add_nb(swap, listA);
+		push_color(listA);
 		del_nb(swap, listB);
+		add_action(action, cpy_list((*listA)), cpy_list((*listB)), "pa");
+		reset_color(listA);
 	}
 }
 
-void		push_b(t_push **listA, t_push **listB)
+void		push_b(t_push **listA, t_push **listB, t_action **action)
 {
 	t_push		*tmpA;
 	int			swap;
 
-	if (options()->d)
-		ft_putendl("pb ");
 	tmpA = *listA;
 	if (tmpA)
 	{
@@ -47,12 +59,10 @@ void		push_b(t_push **listA, t_push **listB)
 			tmpA = tmpA->next;
 		swap = tmpA->nb;
 		add_nb(swap, listB);
+		push_color(listB);
 		del_nb(swap, listA);
+		add_action(action, cpy_list((*listA)), cpy_list((*listB)), "pb");
+		(*listB)->color = OFF;
+		reset_color(listB);
 	}
-}
-
-void		push_ab(t_push **listA, t_push **listB)
-{
-	push_a(listA, listB);
-	push_b(listA, listB);
 }
