@@ -13,27 +13,27 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-static t_action		*new_action(t_push *listA, t_push *listB, char *action)
+static t_action		*new_action(t_push *lista, t_push *listb, char *action)
 {
 	t_action	*new;
 
 	if (!(new = (t_action *) malloc(sizeof(t_action))))
 		error("Malloc fail.");
 	new->action = action;
-	new->listA = listA;
-	new->listB = listB;
+	new->lista = lista;
+	new->listb = listb;
 	new->next = NULL;
 
 	return (new);
 }
 
 
-void				add_action(t_action **action_list, t_push *listA, t_push *listB, char *action)
+void				add_action(t_action **action_list, t_push *lista, t_push *listb, char *action)
 {
 	static t_action		*last = NULL;
 	t_action			*new;
 
-	new = new_action(listA, listB, action);
+	new = new_action(lista, listb, action);
 	if (last)
 		last->next = new;
 	else

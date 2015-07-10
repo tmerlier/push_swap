@@ -25,7 +25,7 @@ static void			print_total(t_action *action)
 	}
 	ft_putstr("Stack order in: ");
 	if (i == 1)
-		ft_putendl("One single move...Easy.");
+		ft_putstr("One single move...Easy.");
 	else
 	{
 		ft_putnbr(i);
@@ -62,10 +62,10 @@ void				print_list(t_push *list, char *list_name)
 	ft_putchar('\n');
 }
 
-void				print_display(t_push *listA, t_push *listB)
+void				print_display(t_push *lista, t_push *listb)
 {
-	print_list(listA, "a: ");
-	print_list(listB, "b: ");
+	print_list(lista, "a: ");
+	print_list(listb, "b: ");
 	ft_putchar('\n');
 }
 
@@ -82,7 +82,7 @@ void				print_actions(t_action *action)
 		if (options()->v)
 		{
 			ft_putendl(tmp->action);
-			print_display(tmp->listA, tmp->listB);
+			print_display(tmp->lista, tmp->listb);
 		}
 		else
 		{
