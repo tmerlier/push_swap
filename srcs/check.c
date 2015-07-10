@@ -13,7 +13,7 @@
 #include <libft.h>
 #include "push_swap.h"
 
-int				checklen(t_push *list)
+int				checkempty(t_push *list)
 {
 	int		i;
 
@@ -26,7 +26,30 @@ int				checklen(t_push *list)
 	if (i == 0)
 		error("List is empty.");
 	return (i);
+}
 
+int				checklen(t_push *list)
+{
+	int		i;
+
+	i = 0;
+	while (list)
+	{
+		list = list->next;
+		i++;
+	}
+	return (i);
+}
+
+int				checkorder(t_push *list)
+{
+	while (list->next)
+	{
+		if (list->nb < list->next->nb)
+			return (0);
+		list = list->next;
+	}
+	return (1);
 }
 
 int				checkdouble(t_push *list)

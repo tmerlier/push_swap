@@ -13,13 +13,40 @@
 #include <libft.h>
 #include "push_swap.h"
 
-static void			print_data(int nb)
+static void			print_total(t_action *action)
 {
-	ft_putnbr(nb);
-	ft_putchar(' ');
+	int		i;
+
+	i = -1;
+	while (action)
+	{
+		action = action->next;
+		i++;
+	}
+	ft_putstr("Stack order in: ");
+	if (i == 1)
+		ft_putendl("One single move...Easy.");
+	else
+	{
+		ft_putnbr(i);
+		ft_putstr(" moves.");
+	}
 }
 
-void			print_list(t_push *list, char *list_name)
+static void			print_data(int nb, int color)
+{
+	if (color && options()->c)
+	{
+		ft_putstr("\033[4;32m");
+		ft_putnbr(nb);
+		ft_putstr("\033[0m");
+	}
+	else
+		ft_putnbr(nb);
+}
+
+
+void				print_list(t_push *list, char *list_name)
 {
 	t_push	*tmp;
 
@@ -27,15 +54,45 @@ void			print_list(t_push *list, char *list_name)
 	ft_putstr(list_name);
 	while (tmp)
 	{
-		print_data(tmp->nb);
+		print_data(tmp->nb, tmp->color);
+		if (tmp->next)
+			ft_putchar(' ');
 		tmp = tmp->next;
 	}
 	ft_putchar('\n');
 }
 
-void			print_display(t_push *listA, t_push *listB)
+void				print_display(t_push *listA, t_push *listB)
 {
 	print_list(listA, "a: ");
 	print_list(listB, "b: ");
+	ft_putchar('\n');
+}
+
+void				print_actions(t_action *action)
+{
+	t_action	*tmp;
+
+	if (options()->v)
+		tmp = action;
+	else
+		tmp = action->next;
+	while (tmp)
+	{
+		if (options()->v)
+		{
+			ft_putendl(tmp->action);
+			print_display(tmp->listA, tmp->listB);
+		}
+		else
+		{
+			ft_putstr(tmp->action);
+			if (tmp->next)
+				ft_putchar(' ');
+		}
+		tmp = tmp->next;
+	}
+	if (options()->v)
+		print_total(action);
 	ft_putchar('\n');
 }

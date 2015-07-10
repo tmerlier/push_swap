@@ -13,26 +13,45 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void		push_swap(t_push *listA)
+void			orderB(t_push **listA, t_push **listB, t_action **actions)
 {
-	t_push	*listB;
+	while(checklen(*listB) > 1 && !checkorder(*listB))
+	{
+		if (get_last(*listB) < get_before_last(*listB))
+		{
+			swap_b(listA, listB, actions);
+			push_a(listA, listB, actions);
+		}
+		else
+			break;
+	}
+}
+
+void		orderA(t_push **listA, t_push **listB, t_action **actions)
+{
+	while (!checkorder(*listA))
+	{
+		if (get_last(*listA) > get_before_last(*listA))
+			swap_a(listA, listB, actions);
+		else
+			push_b(listA, listB, actions);
+		orderB(listA, listB, actions);
+	}
+}
+
+t_action		*push_swap(t_push *listA)
+{
+	t_push		*listB;
+	t_action	*actions;
 
 	listB = NULL;
-	print_display(listA, listB);
-	swap_a(&listA);
-	print_display(listA, listB);
-	push_b(&listA, &listB);
-	push_b(&listA, &listB);
-	push_b(&listA, &listB);
-	print_display(listA, listB);
-	rotate_ab(&listA, &listB);
-	print_display(listA, listB);
-	rev_rotate_ab(&listA, &listB);
-	print_display(listA, listB);
-	swap_a(&listA);
-	print_display(listA, listB);
-	push_a(&listA, &listB);
-	push_a(&listA, &listB);
-	push_a(&listA, &listB);
-	print_display(listA, listB);
+	actions = NULL;
+	add_action(&actions, cpy_list(listA), cpy_list(listB), "START");
+	orderA(&listA, &listB, &actions);
+	while (checklen(listB))
+	{
+		push_a(&listA, &listB, &actions);
+		orderA(&listA, &listB, &actions);
+	}
+	return actions;
 }

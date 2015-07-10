@@ -23,8 +23,11 @@ FLAGS = -Wall -Wextra -Werror -g
 SRC = main.c \
 	  push_swap.c \
 	  list.c \
+	  actions.c \
+	  cpy_list.c \
 	  options.c \
 	  check.c \
+	  get.c \
 	  print.c \
 	  swap.c \
 	  push.c \

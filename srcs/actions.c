@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmerlier <tmerlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,19 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stdlib.h>
 #include "push_swap.h"
 
-int		main(int argc, char **argv)
+static t_action		*new_action(t_push *listA, t_push *listB, char *action)
 {
-	t_push	*listB;
+	t_action	*new;
 
-	listB = NULL;
-	if (argc < 2)
-		error("Aucun argument.");
-	else
-		listB = create_list(argc, argv);
-	if (listB)
-		print_actions(push_swap(listB));
-	return (0);
+	if (!(new = (t_action *) malloc(sizeof(t_action))))
+		error("Malloc fail.");
+	new->action = action;
+	new->listA = listA;
+	new->listB = listB;
+	new->next = NULL;
+
+	return (new);
 }
+
+
+void				add_action(t_action **action_list, t_push *listA, t_push *listB, char *action)
+{
+	static t_action		*last = NULL;
+	t_action			*new;
+
+	new = new_action(listA, listB, action);
+	if (last)
+		last->next = new;
+	else
+		*action_list = new;
+	last = new;
+}
+

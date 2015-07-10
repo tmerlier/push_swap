@@ -10,51 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include "push_swap.h"
 
-void	swap_a(t_push **listA, t_push **listB, t_action **action)
+int				get_first(t_push *list)
 {
-	t_push		*tmp;
-	int			swap;
-
-	if (checklen(*listA) > 1)
-	{
-		tmp = *listA;
-		while (tmp->next)
-			tmp = tmp->next;
-		swap = tmp->nb;
-		tmp->nb = tmp->prev->nb;
-		tmp->prev->nb = swap;
-		tmp->color = ON;
-		tmp->prev->color = ON;
-		add_action(action, cpy_list((*listA)), cpy_list((*listB)), "sa");
-		reset_color(listA);
-	}
+	return (list->nb);
 }
 
-void	swap_b(t_push **listA, t_push **listB, t_action **action)
+int				get_last(t_push *list)
 {
-	t_push		*tmp;
-	int			swap;
-
-	if (checklen(*listB) > 1)
-	{
-		tmp = *listB;
-		while (tmp->next)
-			tmp = tmp->next;
-		swap = tmp->nb;
-		tmp->nb = tmp->prev->nb;
-		tmp->prev->nb = swap;
-		tmp->color = ON;
-		tmp->prev->color = ON;
-		add_action(action, cpy_list((*listA)), cpy_list((*listB)), "sb");
-		reset_color(listB);
-	}
+	while (list->next)
+		list = list->next;
+	return (list->nb);
 }
 
-void	swap_ab(t_push **listA, t_push **listB, t_action **action)
+int				get_before_last(t_push *list)
 {
-	swap_a(listA, listB, action);
-	swap_b(listA, listB, action);
+	while (list->next)
+		list = list->next;
+	return (list->prev->nb);
 }

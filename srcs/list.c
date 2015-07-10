@@ -13,8 +13,7 @@
 #include <stdlib.h>
 #include <libft.h>
 #include "push_swap.h"
-// TEST
-#include <stdio.h>
+
 static t_push	*new_list(int nb)
 {
 	t_push	*new;
@@ -22,6 +21,7 @@ static t_push	*new_list(int nb)
 	if (!(new = (t_push *) malloc(sizeof(t_push))))
 		error("Malloc fail.");
 	new->nb = nb;
+	new->color = OFF;
 	new->prev = NULL;
 	new->next = NULL;
 
@@ -39,7 +39,7 @@ void			del_nb(int nb, t_push **list)
 	if (tmp->prev)
 		tmp->prev->next = NULL;
 	else
-		list = NULL;
+		*list = NULL;
 	tmp = NULL;
 }
 
@@ -80,23 +80,22 @@ static void			add_new_nb(int nb, t_push **list)
 t_push			*create_list(int argc, char **argv)
 {
 	t_push	*list;
-	int		i;
 	int		option;
 
 	list = NULL;
 	option = 0;
 	if (argv[1][0] == '-')
-		option = is_option(argv[1]);
-	i = 1 + option;
-	while (i < argc)
+		option += is_option(argv[1]);
+	argc--;
+	while (argc > option)
 	{
-		if (ft_str_isint(argv[i], ft_strlen(argv[i])))
-			add_new_nb(ft_atoi(argv[i]), &list);
+		if (ft_str_isint(argv[argc], ft_strlen(argv[argc])))
+			add_new_nb(ft_atoi(argv[argc]), &list);
 		else
 			error("Au moins un argument n\'est pas un int.");
-		i++;
+		argc--;
 	}
 	checkdouble(list);
-	checklen(list);
+	checkempty(list);
 	return list;
 }
