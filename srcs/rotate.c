@@ -13,56 +13,56 @@
 #include <libft.h>
 #include "push_swap.h"
 
-void			rotate_a(t_push **listA, t_push **listB, t_action **action)
+void			rotate_a(t_push **lista, t_push **listb, t_action **action)
 {
-	t_push		*tmpA;
+	t_push		*tmpa;
 	int			end;
 
-	if (*listA)
+	if (*lista)
 	{
-		tmpA = *listA;
-		tmpA->color = ON;
-		while (tmpA->next)
-			tmpA = tmpA->next;
-		end = tmpA->nb;
-		while (tmpA->prev)
+		tmpa = *lista;
+		tmpa->color = ON;
+		while (tmpa->next)
+			tmpa = tmpa->next;
+		end = tmpa->nb;
+		while (tmpa->prev)
 		{
-			tmpA->nb = tmpA->prev->nb;
-			tmpA = tmpA->prev;
-			tmpA->color = ON;
+			tmpa->nb = tmpa->prev->nb;
+			tmpa = tmpa->prev;
+			tmpa->color = ON;
 		}
-		(*listA)->nb = end;
-		add_action(action, cpy_list(*listA), cpy_list(*listB), "ra");
-		reset_color(listA);
+		(*lista)->nb = end;
+		add_action(action, cpy_list(*lista), cpy_list(*listb), "ra");
+		reset_color(lista);
 	}
 }
 
-void			rotate_b(t_push **listA, t_push **listB, t_action **action)
+void			rotate_b(t_push **lista, t_push **listb, t_action **action)
 {
-	t_push		*tmpB;
+	t_push		*tmpb;
 	int			end;
 
-	if (*listB)
+	if (*listb)
 	{
-		tmpB = *listB;
-		tmpB->color = ON;
-		while (tmpB->next)
-			tmpB = tmpB->next;
-		end = tmpB->nb;
-		while (tmpB->prev)
+		tmpb = *listb;
+		tmpb->color = ON;
+		while (tmpb->next)
+			tmpb = tmpb->next;
+		end = tmpb->nb;
+		while (tmpb->prev)
 		{
-			tmpB->nb = tmpB->prev->nb;
-			tmpB = tmpB->prev;
-			tmpB->color = ON;
+			tmpb->nb = tmpb->prev->nb;
+			tmpb = tmpb->prev;
+			tmpb->color = ON;
 		}
-		(*listB)->nb = end;
-		add_action(action, cpy_list(*listA), cpy_list(*listB), "rb");
-		reset_color(listB);
+		(*listb)->nb = end;
+		add_action(action, cpy_list(*lista), cpy_list(*listb), "rb");
+		reset_color(listb);
 	}
 }
 
-void			rotate_ab(t_push **listA, t_push **listB, t_action **action)
+void			rotate_ab(t_push **lista, t_push **listb, t_action **action)
 {
-	rotate_a(listA, listB, action);
-	rotate_b(listA, listB, action);
+	rotate_a(lista, listb, action);
+	rotate_b(lista, listb, action);
 }
