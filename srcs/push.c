@@ -30,15 +30,15 @@ void		push_color(t_push **list)
 
 void		push_a(t_push **lista, t_push **listb, t_action **action)
 {
-	t_push		*tmpB;
+	t_push		*tmpb;
 	int			swap;
 
-	tmpB = *listb;
-	if (tmpB)
+	tmpb = *listb;
+	if (tmpb)
 	{
-		while (tmpB->next)
-			tmpB = tmpB->next;
-		swap = tmpB->nb;
+		while (tmpb->next)
+			tmpb = tmpb->next;
+		swap = tmpb->nb;
 		add_nb(swap, lista);
 		push_color(lista);
 		del_nb(swap, listb);
@@ -49,15 +49,15 @@ void		push_a(t_push **lista, t_push **listb, t_action **action)
 
 void		push_b(t_push **lista, t_push **listb, t_action **action)
 {
-	t_push		*tmpA;
+	t_push		*tmpa;
 	int			swap;
 
-	tmpA = *lista;
-	if (tmpA)
+	tmpa = *lista;
+	if (tmpa)
 	{
-		while (tmpA->next)
-			tmpA = tmpA->next;
-		swap = tmpA->nb;
+		while (tmpa->next)
+			tmpa = tmpa->next;
+		swap = tmpa->nb;
 		add_nb(swap, listb);
 		push_color(listb);
 		del_nb(swap, lista);

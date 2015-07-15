@@ -25,7 +25,7 @@ static void			print_total(t_action *action)
 	}
 	ft_putstr("Stack order in: ");
 	if (i == 1)
-		ft_putendl("One single move...Easy.");
+		ft_putstr("One single move...Easy.");
 	else
 	{
 		ft_putnbr(i);

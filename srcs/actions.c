@@ -27,7 +27,6 @@ static t_action		*new_action(t_push *lista, t_push *listb, char *action)
 	return (new);
 }
 
-
 void				add_action(t_action **action_list, t_push *lista,
 									t_push *listb, char *action)
 {
