@@ -15,14 +15,14 @@
 
 int		main(int argc, char **argv)
 {
-	t_push	*listB;
+	t_push	*listb;
 
-	listB = NULL;
+	listb = NULL;
 	if (argc < 2)
 		error("Aucun argument.");
 	else
-		listB = create_list(argc, argv);
-	if (listB)
-		print_actions(push_swap(listB));
+		listb = create_list(argc, argv);
+	if (listb)
+		print_actions(push_swap(listb));
 	return (0);
 }
