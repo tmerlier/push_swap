@@ -45,7 +45,6 @@ static void			print_data(int nb, int color)
 		ft_putnbr(nb);
 }
 
-
 void				print_list(t_push *list, char *list_name)
 {
 	t_push	*tmp;
@@ -62,10 +61,10 @@ void				print_list(t_push *list, char *list_name)
 	ft_putchar('\n');
 }
 
-void				print_display(t_push *listA, t_push *listB)
+void				print_display(t_push *lista, t_push *listb)
 {
-	print_list(listA, "a: ");
-	print_list(listB, "b: ");
+	print_list(lista, "a: ");
+	print_list(listb, "b: ");
 	ft_putchar('\n');
 }
 
@@ -82,7 +81,7 @@ void				print_actions(t_action *action)
 		if (options()->v)
 		{
 			ft_putendl(tmp->action);
-			print_display(tmp->listA, tmp->listB);
+			print_display(tmp->lista, tmp->listb);
 		}
 		else
 		{

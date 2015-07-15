@@ -24,64 +24,69 @@ typedef struct		s_push
 	struct s_push	*next;
 }					t_push;
 
-typedef struct	s_options
+typedef struct		s_options
 {
-	int			r;
-	int			v;
-	int			c;
-}				t_options;
+	int				r;
+	int				v;
+	int				c;
+}					t_options;
 
-typedef struct	s_action
+typedef struct		s_action
 {
 	char			*action;
-	t_push			*listA;
-	t_push			*listB;
+	t_push			*lista;
+	t_push			*listb;
 	struct s_action	*next;
-}				t_action;
+}					t_action;
 
-t_action		*push_swap(t_push *listB);
+t_action			*push_swap(t_push *listb);
 
-t_push			*create_list(int argc, char **argv);
-void			add_nb(int nb, t_push **list);
-void			del_nb(int nb, t_push **list);
+t_push				*create_list(int argc, char **argv);
+void				add_nb(int nb, t_push **list);
+void				del_nb(int nb, t_push **list);
 
-t_push			*cpy_list(t_push *list);
+t_push				*cpy_list(t_push *list);
 
-void			add_action(t_action **action_list, t_push *listA, t_push *listB, char *action);
+void				add_action(t_action **action_list, t_push *lista,
+									t_push *listb, char *action);
 
-int				get_first(t_push *list);
-int				get_last(t_push *list);
-int				get_before_last(t_push *list);
+int					get_first(t_push *list);
+int					get_last(t_push *list);
+int					get_before_last(t_push *list);
 
-void			print_list(t_push *list, char *list_name);
-void			print_actions(t_action *action);
-void			print_display(t_push *listA, t_push *listB);
+void				print_list(t_push *list, char *list_name);
+void				print_actions(t_action *action);
+void				print_display(t_push *lista, t_push *listb);
 
-void			reset_color(t_push **list);
-t_options		*init_options(void);
-t_options		*options(void);
-int				is_option(char *argv);
+void				reset_color(t_push **list);
+t_options			*init_options(void);
+t_options			*options(void);
+int					is_option(char *argv);
 
-int				checklen(t_push *list);
-int				checkdouble(t_push *list);
-int				checkempty(t_push *list);
-int				checkorder(t_push *list);
+int					checklen(t_push *list);
+int					checkdouble(t_push *list);
+int					checkempty(t_push *list);
+int					checkorder(t_push *list);
 
-void			swap_a(t_push **listA, t_push **listB, t_action **action);
-void			swap_b(t_push **listA, t_push **listB, t_action **action);
-void			swap_ab(t_push **listA, t_push **listB, t_action **action);
+void				swap_a(t_push **lista, t_push **listb, t_action **action);
+void				swap_b(t_push **lista, t_push **listb, t_action **action);
+void				swap_ab(t_push **lista, t_push **listb, t_action **action);
 
-void			push_a(t_push **listA, t_push **listB, t_action **action);
-void			push_b(t_push **listA, t_push **listB, t_action **action);
+void				push_a(t_push **lista, t_push **listb, t_action **action);
+void				push_b(t_push **lista, t_push **listb, t_action **action);
 
-void			rotate_a(t_push **listA, t_push **listB, t_action **action);
-void			rotate_b(t_push **listA, t_push **listB, t_action **action);
-void			rotate_ab(t_push **listA, t_push **listB, t_action **action);
+void				rotate_a(t_push **lista, t_push **listb, t_action **action);
+void				rotate_b(t_push **lista, t_push **listb, t_action **action);
+void				rotate_ab(t_push **lista, t_push **listb,
+									t_action **action);
 
-void			rev_rotate_a(t_push **listA, t_push **listB, t_action **action);
-void			rev_rotate_b(t_push **listA, t_push **listB, t_action **action);
-void			rev_rotate_ab(t_push **listA, t_push **listB, t_action **action);
+void				rev_rotate_a(t_push **lista, t_push **listb,
+									t_action **action);
+void				rev_rotate_b(t_push **lista, t_push **listb,
+									t_action **action);
+void				rev_rotate_ab(t_push **lista, t_push **listb,
+									t_action **action);
 
-void			error(char *err_msg);
+void				error(char *err_msg);
 
 #endif

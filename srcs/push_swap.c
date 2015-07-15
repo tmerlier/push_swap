@@ -13,45 +13,45 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void			orderB(t_push **listA, t_push **listB, t_action **actions)
+static void			order_b(t_push **lista, t_push **listb, t_action **actions)
 {
-	while(checklen(*listB) > 1 && !checkorder(*listB))
+	while(checklen(*listb) > 1 && !checkorder(*listb))
 	{
-		if (get_last(*listB) < get_before_last(*listB))
+		if (get_last(*listb) < get_before_last(*listb))
 		{
-			swap_b(listA, listB, actions);
-			push_a(listA, listB, actions);
+			swap_b(lista, listb, actions);
+			push_a(lista, listb, actions);
 		}
 		else
 			break;
 	}
 }
 
-void		orderA(t_push **listA, t_push **listB, t_action **actions)
+static void			order_a(t_push **lista, t_push **listb, t_action **actions)
 {
-	while (!checkorder(*listA))
+	while (!checkorder(*lista))
 	{
-		if (get_last(*listA) > get_before_last(*listA))
-			swap_a(listA, listB, actions);
+		if (get_last(*lista) > get_before_last(*lista))
+			swap_a(lista, listb, actions);
 		else
-			push_b(listA, listB, actions);
-		orderB(listA, listB, actions);
+			push_b(lista, listb, actions);
+		order_b(lista, listb, actions);
 	}
 }
 
-t_action		*push_swap(t_push *listA)
+t_action			*push_swap(t_push *lista)
 {
-	t_push		*listB;
+	t_push		*listb;
 	t_action	*actions;
 
-	listB = NULL;
+	listb = NULL;
 	actions = NULL;
-	add_action(&actions, cpy_list(listA), cpy_list(listB), "START");
-	orderA(&listA, &listB, &actions);
-	while (checklen(listB))
+	add_action(&actions, cpy_list(lista), cpy_list(listb), "START");
+	order_a(&lista, &listb, &actions);
+	while (checklen(listb))
 	{
-		push_a(&listA, &listB, &actions);
-		orderA(&listA, &listB, &actions);
+		push_a(&lista, &listb, &actions);
+		order_a(&lista, &listb, &actions);
 	}
 	return actions;
 }
