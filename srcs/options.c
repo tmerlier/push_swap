@@ -13,7 +13,7 @@
 #include <libft.h>
 #include "push_swap.h"
 
-static int				option_active()
+static int				option_active(void)
 {
 	if (options()->r == ON)
 		return (1);
@@ -50,7 +50,7 @@ t_options				*options(void)
 	return (glob);
 }
 
-int			is_option(char *argv)
+int						is_option(char *argv)
 {
 	int		active;
 	int		len;

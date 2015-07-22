@@ -15,7 +15,7 @@
 
 static void			order_b(t_push **lista, t_push **listb, t_action **actions)
 {
-	while(checklen(*listb) > 1 && !checkorder(*listb))
+	while (checklen(*listb) > 1 && !checkorder(*listb))
 	{
 		if (get_last(*listb) < get_before_last(*listb))
 		{
@@ -23,7 +23,7 @@ static void			order_b(t_push **lista, t_push **listb, t_action **actions)
 			push_a(lista, listb, actions);
 		}
 		else
-			break;
+			break ;
 	}
 }
 
@@ -53,5 +53,5 @@ t_action			*push_swap(t_push *lista)
 		push_a(&lista, &listb, &actions);
 		order_a(&lista, &listb, &actions);
 	}
-	return actions;
+	return (actions);
 }

@@ -18,13 +18,12 @@ static t_push	*new_list(int nb)
 {
 	t_push	*new;
 
-	if (!(new = (t_push *) malloc(sizeof(t_push))))
+	if (!(new = (t_push *)malloc(sizeof(t_push))))
 		error("Malloc fail.");
 	new->nb = nb;
 	new->color = OFF;
 	new->prev = NULL;
 	new->next = NULL;
-
 	return (new);
 }
 
@@ -61,7 +60,7 @@ void			add_nb(int nb, t_push **list)
 	}
 }
 
-static void			add_new_nb(int nb, t_push **list)
+static void		add_new_nb(int nb, t_push **list)
 {
 	static t_push	*last = NULL;
 	t_push			*new;
@@ -97,5 +96,5 @@ t_push			*create_list(int argc, char **argv)
 	}
 	checkdouble(list);
 	checkempty(list);
-	return list;
+	return (list);
 }
