@@ -17,13 +17,12 @@ static t_push		*new_list_cpy(int nb, int color)
 {
 	t_push	*new;
 
-	if (!(new = (t_push *) malloc(sizeof(t_push))))
+	if (!(new = (t_push *)malloc(sizeof(t_push))))
 		error("Malloc fail.");
 	new->nb = nb;
 	new->color = color;
 	new->prev = NULL;
 	new->next = NULL;
-
 	return (new);
 }
 
