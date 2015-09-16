@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = push_swap2
 
 LIB = libft/
 
@@ -21,7 +21,7 @@ DIRSRC = srcs/
 FLAGS = -Wall -Wextra -Werror -g
 
 SRC = main.c \
-	  push_swap.c \
+	  push_swap2.c \
 	  list.c \
 	  actions.c \
 	  cpy_list.c \

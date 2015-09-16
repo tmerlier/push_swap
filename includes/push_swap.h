@@ -66,7 +66,8 @@ int					is_option(char *argv);
 int					checklen(t_push *list);
 int					checkdouble(t_push *list);
 int					checkempty(t_push *list);
-int					checkorder(t_push *list);
+int					checkorder_increase(t_push *list);
+int					checkorder_decrease(t_push *list);
 
 void				swap_a(t_push **lista, t_push **listb, t_action **action);
 void				swap_b(t_push **lista, t_push **listb, t_action **action);
