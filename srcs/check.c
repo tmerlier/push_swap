@@ -41,11 +41,22 @@ int				checklen(t_push *list)
 	return (i);
 }
 
-int				checkorder(t_push *list)
+int				checkorder_decrease(t_push *list)
 {
 	while (list->next)
 	{
 		if (list->nb < list->next->nb)
+			return (0);
+		list = list->next;
+	}
+	return (1);
+}
+
+int				checkorder_increase(t_push *list)
+{
+	while (list->next)
+	{
+		if (list->nb > list->next->nb)
 			return (0);
 		list = list->next;
 	}
