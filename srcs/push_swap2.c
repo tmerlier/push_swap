@@ -13,23 +13,23 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-static void			order_b(t_push **lista, t_push **listb, t_action **actions)
+static void			order_b(t_push **lista, t_push **listb)
 {
 	// Tant que b n'est pas vide et qu'elle n'est pas rangée
 	while (checklen(*listb) > 1 && !checkorder_increase(*listb))
 	{
 		if (get_last(*listb) < get_before_last(*listb))
 		{
-			swap_b(lista, listb, actions);
+			swap_b(lista, listb);
 			if (!checkorder_increase(*listb))
-				push_a(lista, listb, actions);
+				push_a(lista, listb);
 		}
 		else
 			break ;
 	}
 }
 
-static void			order_a(t_push **lista, t_push **listb, t_action **actions)
+static void			order_a(t_push **lista, t_push **listb)
 {
 	while (!checkorder_decrease(*lista))
 	{
@@ -37,22 +37,22 @@ static void			order_a(t_push **lista, t_push **listb, t_action **actions)
 		if (get_last(*lista) < get_before_last(*lista) && get_last(*lista) < get_first(*lista))
 		{
 			if (*listb == NULL || get_last(*lista) > get_last(*listb))
-				push_b(lista, listb, actions);
+				push_b(lista, listb);
 			else
 			{
-				push_a(lista, listb, actions);
-				swap_a(lista, listb, actions);
+				push_a(lista, listb);
+				swap_a(lista, listb);
 			}
 		}
 		else
 		{
 			// SI l'avant dernier qui est le plus petit
 			if (get_before_last(*lista) < get_first(*lista))
-				swap_a(lista, listb, actions);
+				swap_a(lista, listb);
 			else
-				rev_rotate_a(lista, listb, actions);
+				rev_rotate_a(lista, listb);
 		}
-		order_b(lista, listb, actions);
+		order_b(lista, listb);
 	}
 }
 
@@ -61,14 +61,16 @@ t_action			*push_swap(t_push *lista)
 	t_push		*listb;
 	t_action	*actions;
 
-	listb = NULL;
+	listb = cpy_list(lista);
 	actions = NULL;
-	add_action(&actions, cpy_list(lista), cpy_list(listb), "START");
-	order_a(&lista, &listb, &actions);
+	add_action(lista, listb, "START");
+	order_a(&lista, &listb);
 	while (checklen(listb))
 	{
-		push_a(&lista, &listb, &actions);
-		order_a(&lista, &listb, &actions);
+		push_a(&lista, &listb);
+		order_a(&lista, &listb);
 	}
+	del_list(&lista);
+	del_list(&listb);
 	return (actions);
 }

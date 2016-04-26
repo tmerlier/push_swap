@@ -47,7 +47,9 @@ void				del_nb(int nb, t_push **list);
 
 t_push				*cpy_list(t_push *list);
 
-void				add_action(t_action **action_list, t_push *lista,
+// void				add_action(t_action **action_list, t_push *lista,
+// 									t_push *listb, char *action);
+void				add_action(t_push *lista,
 									t_push *listb, char *action);
 
 int					get_first(t_push *list);
@@ -56,6 +58,7 @@ int					get_before_last(t_push *list);
 
 void				print_list(t_push *list, char *list_name);
 void				print_actions(t_action *action);
+void				print_action(t_push *lista, t_push *listb, char *action);
 void				print_display(t_push *lista, t_push *listb);
 
 void				reset_color(t_push **list);
@@ -69,24 +72,34 @@ int					checkempty(t_push *list);
 int					checkorder_increase(t_push *list);
 int					checkorder_decrease(t_push *list);
 
-void				swap_a(t_push **lista, t_push **listb, t_action **action);
-void				swap_b(t_push **lista, t_push **listb, t_action **action);
-void				swap_ab(t_push **lista, t_push **listb, t_action **action);
+// void				swap_a(t_push **lista, t_push **listb, t_action **action);
+// void				swap_b(t_push **lista, t_push **listb, t_action **action);
+// void				swap_ab(t_push **lista, t_push **listb, t_action **action);
 
-void				push_a(t_push **lista, t_push **listb, t_action **action);
-void				push_b(t_push **lista, t_push **listb, t_action **action);
+// void				push_a(t_push **lista, t_push **listb, t_action **action);
+// void				push_b(t_push **lista, t_push **listb, t_action **action);
 
-void				rotate_a(t_push **lista, t_push **listb, t_action **action);
-void				rotate_b(t_push **lista, t_push **listb, t_action **action);
-void				rotate_ab(t_push **lista, t_push **listb,
-									t_action **action);
+// void				rotate_a(t_push **lista, t_push **listb, t_action **action);
+// void				rotate_b(t_push **lista, t_push **listb, t_action **action);
+// void				rotate_ab(t_push **lista, t_push **listb,
+// 									t_action **action);
 
-void				rev_rotate_a(t_push **lista, t_push **listb,
-									t_action **action);
-void				rev_rotate_b(t_push **lista, t_push **listb,
-									t_action **action);
-void				rev_rotate_ab(t_push **lista, t_push **listb,
-									t_action **action);
+void				swap_a(t_push **lista, t_push **listb);
+void				swap_b(t_push **lista, t_push **listb);
+void				swap_ab(t_push **lista, t_push **listb);
+
+void				push_a(t_push **lista, t_push **listb);
+void				push_b(t_push **lista, t_push **listb);
+
+void				rotate_a(t_push **lista, t_push **listb);
+void				rotate_b(t_push **lista, t_push **listb);
+void				rotate_ab(t_push **lista, t_push **listb);
+
+void				rev_rotate_a(t_push **lista, t_push **listb);
+void				rev_rotate_b(t_push **lista, t_push **listb);
+void				rev_rotate_ab(t_push **lista, t_push **listb);
+
+void				del_list(t_push **lst);
 
 void				error(char *err_msg);
 

@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 	else
 		listb = create_list(argc, argv);
 	if (listb)
-		print_actions(push_swap(listb));
+		push_swap(listb);
+		// print_actions(push_swap(listb));
 	return (0);
 }
