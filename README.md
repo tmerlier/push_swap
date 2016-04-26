@@ -1,4 +1,4 @@
-# push_swap
+# Push Swap
 Ce programme prend en paramètre une pile sous la forme d’une liste de nombres et a pour but de trier cette pile avec le moins d’opérations possibles
 
 # <a name="makefile">Makefile</a>
