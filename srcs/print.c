@@ -95,3 +95,22 @@ void				print_actions(t_action *action)
 		print_total(action);
 	ft_putchar('\n');
 }
+
+void				print_action(t_push *lista,
+									t_push *listb, char *action)
+{
+	if (options()->v)
+	{
+		ft_putendl(action);
+		print_display(lista, listb);
+	}
+	else
+	{
+		ft_putstr(action);
+		ft_putchar(' ');
+	}
+
+	// if (options()->v)
+	// 	print_total(action);
+	// ft_putchar('\n');
+}

@@ -33,6 +33,7 @@ SRC = main.c \
 	  push.c \
 	  rotate.c \
 	  rev_rotate.c \
+	  free.c \
 	  error.c
 
 OBJ = $(SRC:.c=.o)

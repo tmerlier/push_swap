@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 ### C ###
+>>>>>>> 640892bb621ad84167548cfb6b27d7cbc76b7f7f
 # Object files
 *.o
 *.ko
@@ -31,6 +34,8 @@
 
 # Debug files
 *.dSYM/
+<<<<<<< HEAD
+=======
 
 
 ### OSX ###
@@ -72,3 +77,4 @@ Session.vim
 *~
 # auto-generated tag files
 tags
+>>>>>>> 640892bb621ad84167548cfb6b27d7cbc76b7f7f

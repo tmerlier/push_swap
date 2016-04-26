@@ -28,7 +28,7 @@ void		push_color(t_push **list)
 	}
 }
 
-void		push_a(t_push **lista, t_push **listb, t_action **action)
+void		push_a(t_push **lista, t_push **listb)
 {
 	t_push		*tmpb;
 	int			swap;
@@ -42,12 +42,12 @@ void		push_a(t_push **lista, t_push **listb, t_action **action)
 		add_nb(swap, lista);
 		push_color(lista);
 		del_nb(swap, listb);
-		add_action(action, cpy_list((*lista)), cpy_list((*listb)), "pa");
+		add_action(cpy_list((*lista)), cpy_list((*listb)), "pa");
 		reset_color(lista);
 	}
 }
 
-void		push_b(t_push **lista, t_push **listb, t_action **action)
+void		push_b(t_push **lista, t_push **listb)
 {
 	t_push		*tmpa;
 	int			swap;
@@ -61,7 +61,7 @@ void		push_b(t_push **lista, t_push **listb, t_action **action)
 		add_nb(swap, listb);
 		push_color(listb);
 		del_nb(swap, lista);
-		add_action(action, cpy_list((*lista)), cpy_list((*listb)), "pb");
+		add_action(cpy_list((*lista)), cpy_list((*listb)), "pb");
 		(*listb)->color = OFF;
 		reset_color(listb);
 	}

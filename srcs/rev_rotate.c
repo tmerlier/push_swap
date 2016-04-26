@@ -13,7 +13,7 @@
 #include <libft.h>
 #include "push_swap.h"
 
-void		rev_rotate_a(t_push **lista, t_push **listb, t_action **action)
+void		rev_rotate_a(t_push **lista, t_push **listb)
 {
 	t_push		*tmpa;
 	int			start;
@@ -30,12 +30,13 @@ void		rev_rotate_a(t_push **lista, t_push **listb, t_action **action)
 			tmpa = tmpa->next;
 		}
 		tmpa->nb = start;
-		add_action(action, cpy_list((*lista)), cpy_list((*listb)), "rra");
+		// add_action(action, cpy_list((*lista)), cpy_list((*listb)), "rra");
+		add_action(cpy_list((*lista)), cpy_list((*listb)), "rra");
 		reset_color(lista);
 	}
 }
 
-void		rev_rotate_b(t_push **lista, t_push **listb, t_action **action)
+void		rev_rotate_b(t_push **lista, t_push **listb)
 {
 	t_push		*tmpb;
 	int			start;
@@ -52,13 +53,14 @@ void		rev_rotate_b(t_push **lista, t_push **listb, t_action **action)
 			tmpb = tmpb->next;
 		}
 		tmpb->nb = start;
-		add_action(action, cpy_list((*lista)), cpy_list((*listb)), "rrb");
+		// add_action(action, cpy_list((*lista)), cpy_list((*listb)), "rrb");
+		add_action(cpy_list((*lista)), cpy_list((*listb)), "rrb");
 		reset_color(listb);
 	}
 }
 
-void		rev_rotate_ab(t_push **lista, t_push **listb, t_action **action)
+void		rev_rotate_ab(t_push **lista, t_push **listb)
 {
-	rev_rotate_a(lista, listb, action);
-	rev_rotate_b(lista, listb, action);
+	rev_rotate_a(lista, listb);
+	rev_rotate_b(lista, listb);
 }

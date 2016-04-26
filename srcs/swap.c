@@ -13,7 +13,7 @@
 #include <libft.h>
 #include "push_swap.h"
 
-void	swap_a(t_push **lista, t_push **listb, t_action **action)
+void	swap_a(t_push **lista, t_push **listb)
 {
 	t_push		*tmp;
 	int			swap;
@@ -28,12 +28,13 @@ void	swap_a(t_push **lista, t_push **listb, t_action **action)
 		tmp->prev->nb = swap;
 		tmp->color = ON;
 		tmp->prev->color = ON;
-		add_action(action, cpy_list((*lista)), cpy_list((*listb)), "sa");
+		// add_action(action, cpy_list((*lista)), cpy_list((*listb)), "sa");
+		add_action(cpy_list((*lista)), cpy_list((*listb)), "sa");
 		reset_color(lista);
 	}
 }
 
-void	swap_b(t_push **lista, t_push **listb, t_action **action)
+void	swap_b(t_push **lista, t_push **listb)
 {
 	t_push		*tmp;
 	int			swap;
@@ -48,13 +49,14 @@ void	swap_b(t_push **lista, t_push **listb, t_action **action)
 		tmp->prev->nb = swap;
 		tmp->color = ON;
 		tmp->prev->color = ON;
-		add_action(action, cpy_list((*lista)), cpy_list((*listb)), "sb");
+		// add_action(action, cpy_list((*lista)), cpy_list((*listb)), "sb");
+		add_action(cpy_list((*lista)), cpy_list((*listb)), "sb");
 		reset_color(listb);
 	}
 }
 
-void	swap_ab(t_push **lista, t_push **listb, t_action **action)
+void	swap_ab(t_push **lista, t_push **listb)
 {
-	swap_a(lista, listb, action);
-	swap_b(lista, listb, action);
+	swap_a(lista, listb);
+	swap_b(lista, listb);
 }
